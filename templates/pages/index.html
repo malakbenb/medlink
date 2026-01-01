@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}MedLink - Trouvez votre médecin{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="min-vh-100 d-flex align-items-center justify-content-center text-white text-center position-relative overflow-hidden">
+    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;">
+        <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50" style="z-index: 0;"></div>
+    <div class="container animate-on-scroll" style="z-index: 1; position: relative;">
+        <h1 class="display-1 fw-bold mb-4 animate__animated animate__fadeInDown">Santé connectée à portée de main</h1>
+        <p class="lead fs-3 mb-5 animate__animated animate__fadeInUp animate__delay-1s">Trouvez votre médecin en Algérie, prenez rendez-vous en un clic</p>
+    </div>
+</section>
+
+<!-- Bandeau défilement spécialités 100 % manuel -->
+<section class="py-4 bg-white overflow-hidden">
+    <div class="container-fluid">
+        <h3 class="text-center mb-4 display-modern">Nos Spécialités Médicales</h3>
+        <div class="scroller">
+            <div class="scroller__inner">
+
+                <!-- 1. Cardiologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/cardiologie.jpg' %}" class="card-img-top p-3" alt="Cardiologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Cardiologie</h5>
+                            <small>Consultations cœur et vaisseaux</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Dermatologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/peau.jpg' %}" class="card-img-top p-3" alt="Dermatologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Dermatologie</h5>
+                            <small>Soins de la peau</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Pédiatrie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/bebe.jpg' %}" class="card-img-top p-3" alt="Pédiatrie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Pédiatrie</h5>
+                            <small>Médecine des nourrissons</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Neurologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/cerveau.jpg' %}" class="card-img-top p-3" alt="Neurologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Neurologie</h5>
+                            <small>Système nerveux</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Gastro-entérologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/estomac.jpg' %}" class="card-img-top p-3" alt="Gastro-entérologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Gastro-entérologie</h5>
+                            <small>Appareil digestif</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Gynécologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/Gynécologie.jpg' %}" class="card-img-top p-3" alt="Gynécologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Gynécologie</h5>
+                            <small>Santé féminine</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Ophtalmologie -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/oeil.jpg' %}" class="card-img-top p-3" alt="Ophtalmologie">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Ophtalmologie</h5>
+                            <small>Soins des yeux</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Généraliste -->
+                <div class="scroller__item">
+                    <div class="card h-100 glass-card border-0 text-center">
+                        <img src="{% static 'images/generaliste.jpg' %}" class="card-img-top p-3" alt="Généraliste">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-primary">Généraliste</h5>
+                            <small>Médecine générale</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CLONES pour boucle infinie -->
+                <!-- (copie/colle les mêmes 8 blocs ici si tu veux un défilement plus long) -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Recherche -->
+<section class="py-5">
+    <div class="container">
+        <div class="glass-card p-5 rounded-3 animate-on-scroll">
+            <h2 class="display-modern text-center mb-4"><i class="fas fa-search"></i> Trouvez votre médecin</h2>
+            <form method="get" class="row g-4">
+                <div class="col-md-5">
+                    <label class="form-label fw-bold"><i class="fas fa-stethoscope"></i> Spécialité</label>
+                    <select name="specialite" class="form-select form-select-lg">
+                        <option value="">Toutes les spécialités</option>
+                        {% for s in specialites %}
+                            <option value="{{ s.id }}" {% if s.id == current_spec %}selected{% endif %}>{{ s.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label fw-bold"><i class="fas fa-map-marked-alt"></i> Wilaya</label>
+                    <select name="ville" class="form-select form-select-lg">
+                        <option value="">Toutes les wilayas</option>
+                        {% for code, label in villes %}
+                            <option value="{{ code }}" {% if code == current_ville %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-neo btn-warning btn-lg w-100"><i class="fas fa-search"></i> Chercher</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Section Médecins -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="display-modern text-center mb-5 animate-on-scroll"><i class="fas fa-user-md"></i> Médecins disponibles <span class="badge bg-secondary ms-2">{{ medecins.count }}</span></h2>
+        <div class="row">
+            {% for med in medecins %}
+            <div class="col-md-4 mb-4 animate-on-scroll">
+                <div class="card h-100 glass-card hover-lift">
+                    <div class="text-center pt-4">
+                        <img src="https://ui-avatars.com/api/?name={{ med.user.first_name }}+{{ med.user.last_name }}&background=random" alt="Dr. {{ med.user.last_name }}" class="rounded-circle shadow" width="80" height="80">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary fw-bold">Dr. {{ med.user.last_name }} {{ med.user.first_name }}</h5>
+                        <div class="mb-3">
+                            <span class="badge bg-info text-dark me-1">{{ med.specialite.nom }}</span>
+                            <span class="badge bg-warning text-dark">{{ med.get_ville_display }}</span>
+                        </div>
+                        <p class="card-text text-muted"><i class="fas fa-map-marker-alt"></i> {{ med.adresse }}<br><i class="fas fa-phone"></i> {{ med.telephone }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pb-3 text-center">
+                        <a href="{% url 'prendre_rdv' med.id %}" class="btn btn-neo btn-success w-100"><i class="fas fa-calendar-plus"></i> Prendre Rendez-vous</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center animate-on-scroll">
+                <div class="glass-card p-5"><i class="fas fa-search fa-3x text-muted mb-3"></i><h4>Aucun médecin trouvé 😕</h4><p>Essayez d'autres critères de recherche</p></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

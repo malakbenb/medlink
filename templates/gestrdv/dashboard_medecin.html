@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Médecin - MedLink{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Mes Rendez-vous</h2>
+
+    {% if rdvs %}
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Patient</th>
+                    <th>Motif</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rdv in rdvs %}
+                <tr>
+                    <td>{{ rdv.date_heure }}</td>
+                    <td>{{ rdv.patient.first_name }} {{ rdv.patient.last_name }}</td>
+                    <td>{{ rdv.motif }}</td>
+                    <td>
+                        {% if rdv.approuve %}
+                            <span class="badge bg-success">Confirmé</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">En attente</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not rdv.approuve %}
+                            <a href="{% url 'gerer_rdv' rdv.id %}" class="btn btn-sm btn-primary">Gérer</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info mt-3">
+            📅 Aucun rendez-vous demandé pour le moment.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

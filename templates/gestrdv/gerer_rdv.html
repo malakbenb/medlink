@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Gérer Rendez-vous - MedLink{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5>Gestion du Rendez-vous</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>📅 Date :</strong> {{ rdv.date_heure }}</p>
+                    <p><strong>👤 Patient :</strong> {{ rdv.patient.first_name }} {{ rdv.patient.last_name }}</p>
+                    <p><strong>🏥 Spécialité :</strong> {{ rdv.medecin.specialite.nom }}</p>
+                    <p><strong>📝 Motif :</strong> {{ rdv.motif }}</p>
+                    <p><strong>📊 Statut :</strong>
+                        {% if rdv.approuve %}
+                            <span class="badge bg-success">Confirmé</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">En attente</span>
+                        {% endif %}
+                    </p>
+
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="action" value="approuver" class="btn btn-success me-2">✅ Approuver</button>
+                        <button type="submit" name="action" value="refuser" class="btn btn-danger me-2">❌ Refuser</button>
+                        <a href="{% url 'dashboard_medecin' %}" class="btn btn-secondary">← Retour</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

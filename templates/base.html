@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <!-- FAVICON -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}?v=1" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/medlink.png' %}">
+    
+    <title>{% block title %}MedLink - Santé Connectée{% endblock %}</title>
+    
+    <!-- CSS et Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles personnalisés modernes -->
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8766ea 0%, #75d0f1 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+        
+        /* Glassmorphism pour les cards */
+        .glass-card {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15) !important;
+        }
+        
+        /* Animations au scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hover effects modernes */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.174) !important;
+        }
+        
+        /* Boutons néo-brutalistes */
+        .btn-neo {
+            border: 3px solid #fffdfd;
+            box-shadow: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-neo:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: none;
+        }
+        
+        /* Navigation moderne */
+        .navbar-modern {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        /* Typographie */
+        .display-modern {
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), #9d53e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+
+        /* Slide-in latéral */
+
+
+        .scroller{--gap:1.5rem;display:flex;overflow:hidden;user-select:none;gap:var(--gap);}
+        .scroller__inner{flex-shrink:0;display:flex;gap:var(--gap);animation:scroll 40s linear infinite;}
+
+        .scroller:hover .scroller__inner{animation-play-state:paused;}
+
+        .scroller__item{flex:0 0 280px;}
+
+        @keyframes scroll{to{transform:translateX(calc(-50% - .5*var(--gap)));}}
+
+ 
+    </style>
+    
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+    
+    <main class="container-fluid px-0">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Animation au scroll -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

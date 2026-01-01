@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Connexion requise - MedLink{% endblock %}
+
+{% block content %}
+<section class="min-vh-100 d-flex align-items-center justify-content-center text-center">
+    <div class="container">
+        <div class="glass-card p-5 rounded-4 animate-on-scroll">
+            <i class="fas fa-user-lock fa-3x text-warning mb-3"></i>
+            <h2 class="display-modern mb-3">Connexion requise</h2>
+            <p class="lead mb-4">
+                Pour prendre un rendez-vous, veuillez vous connecter ou créer un compte gratuitement.
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-neo btn-primary btn-lg">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </a>
+                <a href="{% url 'inscription' %}?next={{ request.path }}" class="btn btn-neo btn-success btn-lg">
+                    <i class="fas fa-user-plus"></i> Créer un compte
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
